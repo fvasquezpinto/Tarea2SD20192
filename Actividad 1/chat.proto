@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message ChatRequest {
+    string src = 1;
+    string dst = 2;
+    string msg = 3;
+}
+
+message ChatReply {
+  string message = 1;
+}
+
+service Chat {
+    rpc send_receive(ChatRequest) returns (ChatReply) {}
+}
