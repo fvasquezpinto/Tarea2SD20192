@@ -16,8 +16,7 @@ stub_id_mapper = id_mapper_pb2_grpc.ID_mapperStub(channel)
 
 # Adquirir un ID para operar en la arquitectura
 print("Pidiendo al server un ID...")
-number = id_mapper_pb2.Number(value=1)
-response = stub_id_mapper.ID_map(number)
+response = stub_id_mapper.ID_map(id_mapper_pb2.Empty())
 print("Server says: ", response.value)
 print("")
 my_id = response.value
@@ -38,8 +37,7 @@ if my_id == 1:
 
 # Pedir lista de clientes
 print("Pidiendo la lista completa de clientes...")
-clients_list_request = id_mapper_pb2.Number(value=1)
-response = stub_id_mapper.Get_clients_list(clients_list_request)
+response = stub_id_mapper.Get_clients_list(id_mapper_pb2.Empty())
 print("Server says: ", response.clients_list)
 print("")
 
@@ -48,6 +46,13 @@ print("Pidiendo mis mensajes...")
 chat_request = chat_pb2.ChatRequest(src = str(my_id), dst = "", msg = "")
 response = stub_chat.send_receive(chat_request)
 print("Server says: ", str(response.message))
+print("")
+
+# Pedir todos los mensajes que ha enviado este cliente
+print("Pidiendo todos los mensajes que he enviado...")
+client_msg_request = id_mapper_pb2.Number(value = my_id)
+response = stub_chat.Get_client_msgs_list(client_msg_request)
+print("Server says: ", response.client_msgs_list)
 print("")
 
 

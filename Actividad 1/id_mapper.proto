@@ -15,6 +15,6 @@ message IntList {
 service ID_mapper {
     rpc ID_map(Number) returns (Number) {}
 
-    rpc Get_clients_list(Number) returns (IntList) {}
+    rpc Get_clients_list(Empty) returns (IntList) {}
 }
 

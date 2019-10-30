@@ -13,6 +13,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+import id_mapper_pb2 as id__mapper__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,8 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\nchat.proto\"4\n\x0b\x43hatRequest\x12\x0b\n\x03src\x18\x01 \x01(\t\x12\x0b\n\x03\x64st\x18\x02 \x01(\t\x12\x0b\n\x03msg\x18\x03 \x01(\t\"\x1c\n\tChatReply\x12\x0f\n\x07message\x18\x01 \x01(\t22\n\x04\x43hat\x12*\n\x0csend_receive\x12\x0c.ChatRequest\x1a\n.ChatReply\"\x00\x62\x06proto3')
-)
+  serialized_pb=_b('\n\nchat.proto\x1a\x0fid_mapper.proto\"4\n\x0b\x43hatRequest\x12\x0b\n\x03src\x18\x01 \x01(\t\x12\x0b\n\x03\x64st\x18\x02 \x01(\t\x12\x0b\n\x03msg\x18\x03 \x01(\t\"\x1c\n\tChatReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"&\n\nStringList\x12\x18\n\x10\x63lient_msgs_list\x18\x04 \x03(\t2b\n\x04\x43hat\x12*\n\x0csend_receive\x12\x0c.ChatRequest\x1a\n.ChatReply\"\x00\x12.\n\x14Get_client_msgs_list\x12\x07.Number\x1a\x0b.StringList\"\x00\x62\x06proto3')
+  ,
+  dependencies=[id__mapper__pb2.DESCRIPTOR,])
 
 
 
@@ -66,8 +68,8 @@ _CHATREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14,
-  serialized_end=66,
+  serialized_start=31,
+  serialized_end=83,
 )
 
 
@@ -97,12 +99,44 @@ _CHATREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=68,
-  serialized_end=96,
+  serialized_start=85,
+  serialized_end=113,
+)
+
+
+_STRINGLIST = _descriptor.Descriptor(
+  name='StringList',
+  full_name='StringList',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='client_msgs_list', full_name='StringList.client_msgs_list', index=0,
+      number=4, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=115,
+  serialized_end=153,
 )
 
 DESCRIPTOR.message_types_by_name['ChatRequest'] = _CHATREQUEST
 DESCRIPTOR.message_types_by_name['ChatReply'] = _CHATREPLY
+DESCRIPTOR.message_types_by_name['StringList'] = _STRINGLIST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ChatRequest = _reflection.GeneratedProtocolMessageType('ChatRequest', (_message.Message,), {
@@ -119,6 +153,13 @@ ChatReply = _reflection.GeneratedProtocolMessageType('ChatReply', (_message.Mess
   })
 _sym_db.RegisterMessage(ChatReply)
 
+StringList = _reflection.GeneratedProtocolMessageType('StringList', (_message.Message,), {
+  'DESCRIPTOR' : _STRINGLIST,
+  '__module__' : 'chat_pb2'
+  # @@protoc_insertion_point(class_scope:StringList)
+  })
+_sym_db.RegisterMessage(StringList)
+
 
 
 _CHAT = _descriptor.ServiceDescriptor(
@@ -127,8 +168,8 @@ _CHAT = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=98,
-  serialized_end=148,
+  serialized_start=155,
+  serialized_end=253,
   methods=[
   _descriptor.MethodDescriptor(
     name='send_receive',
@@ -137,6 +178,15 @@ _CHAT = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_CHATREQUEST,
     output_type=_CHATREPLY,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Get_client_msgs_list',
+    full_name='Chat.Get_client_msgs_list',
+    index=1,
+    containing_service=None,
+    input_type=id__mapper__pb2._NUMBER,
+    output_type=_STRINGLIST,
     serialized_options=None,
   ),
 ])

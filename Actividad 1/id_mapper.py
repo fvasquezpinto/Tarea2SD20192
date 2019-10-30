@@ -1,7 +1,7 @@
 count = 0
 clients_list = []
 
-def id_map(x):
+def id_map():
 
 	global count
 	global clients_list

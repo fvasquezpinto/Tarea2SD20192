@@ -2,6 +2,7 @@
 import grpc
 
 import chat_pb2 as chat__pb2
+import id_mapper_pb2 as id__mapper__pb2
 
 
 class ChatStub(object):
@@ -19,6 +20,11 @@ class ChatStub(object):
         request_serializer=chat__pb2.ChatRequest.SerializeToString,
         response_deserializer=chat__pb2.ChatReply.FromString,
         )
+    self.Get_client_msgs_list = channel.unary_unary(
+        '/Chat/Get_client_msgs_list',
+        request_serializer=id__mapper__pb2.Number.SerializeToString,
+        response_deserializer=chat__pb2.StringList.FromString,
+        )
 
 
 class ChatServicer(object):
@@ -32,6 +38,13 @@ class ChatServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def Get_client_msgs_list(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_ChatServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -39,6 +52,11 @@ def add_ChatServicer_to_server(servicer, server):
           servicer.send_receive,
           request_deserializer=chat__pb2.ChatRequest.FromString,
           response_serializer=chat__pb2.ChatReply.SerializeToString,
+      ),
+      'Get_client_msgs_list': grpc.unary_unary_rpc_method_handler(
+          servicer.Get_client_msgs_list,
+          request_deserializer=id__mapper__pb2.Number.FromString,
+          response_serializer=chat__pb2.StringList.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

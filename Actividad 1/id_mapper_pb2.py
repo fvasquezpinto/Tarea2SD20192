@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0fid_mapper.proto\"\x07\n\x05\x45mpty\"\x17\n\x06Number\x12\r\n\x05value\x18\x01 \x01(\x05\"#\n\x07IntList\x12\x18\n\x0c\x63lients_list\x18\x04 \x03(\x05\x42\x02\x10\x01\x32R\n\tID_mapper\x12\x1c\n\x06ID_map\x12\x07.Number\x1a\x07.Number\"\x00\x12\'\n\x10Get_clients_list\x12\x07.Number\x1a\x08.IntList\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0fid_mapper.proto\"\x07\n\x05\x45mpty\"\x17\n\x06Number\x12\r\n\x05value\x18\x01 \x01(\x05\"#\n\x07IntList\x12\x18\n\x0c\x63lients_list\x18\x04 \x03(\x05\x42\x02\x10\x01\x32Q\n\tID_mapper\x12\x1c\n\x06ID_map\x12\x07.Number\x1a\x07.Number\"\x00\x12&\n\x10Get_clients_list\x12\x06.Empty\x1a\x08.IntList\"\x00\x62\x06proto3')
 )
 
 
@@ -147,7 +147,7 @@ _ID_MAPPER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   serialized_start=90,
-  serialized_end=172,
+  serialized_end=171,
   methods=[
   _descriptor.MethodDescriptor(
     name='ID_map',
@@ -163,7 +163,7 @@ _ID_MAPPER = _descriptor.ServiceDescriptor(
     full_name='ID_mapper.Get_clients_list',
     index=1,
     containing_service=None,
-    input_type=_NUMBER,
+    input_type=_EMPTY,
     output_type=_INTLIST,
     serialized_options=None,
   ),

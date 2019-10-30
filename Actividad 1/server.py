@@ -16,7 +16,7 @@ class ID_mapperServicer(id_mapper_pb2_grpc.ID_mapperServicer):
 
     def ID_map(self, request, context):
         response = id_mapper_pb2.Number()
-        response.value = id_mapper.id_map(request.value)
+        response.value = id_mapper.id_map()
         return response
 
     def Get_clients_list(self, request, context):
@@ -33,6 +33,12 @@ class ChatServicer(chat_pb2_grpc.ChatServicer):
     def send_receive(self, request, context):
         response = chat_pb2.ChatReply()
         response.message = chat.chat(str(request.src),str(request.dst),str(request.msg))
+        return response
+
+    def Get_client_msgs_list(self, request, context):
+        response = chat_pb2.StringList()
+        response.client_msgs_list.extend(chat.get_client_msgs_list(request.value))
+
         return response
 
 

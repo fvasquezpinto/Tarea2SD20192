@@ -21,7 +21,7 @@ class ID_mapperStub(object):
         )
     self.Get_clients_list = channel.unary_unary(
         '/ID_mapper/Get_clients_list',
-        request_serializer=id__mapper__pb2.Number.SerializeToString,
+        request_serializer=id__mapper__pb2.Empty.SerializeToString,
         response_deserializer=id__mapper__pb2.IntList.FromString,
         )
 
@@ -54,7 +54,7 @@ def add_ID_mapperServicer_to_server(servicer, server):
       ),
       'Get_clients_list': grpc.unary_unary_rpc_method_handler(
           servicer.Get_clients_list,
-          request_deserializer=id__mapper__pb2.Number.FromString,
+          request_deserializer=id__mapper__pb2.Empty.FromString,
           response_serializer=id__mapper__pb2.IntList.SerializeToString,
       ),
   }
