@@ -48,6 +48,8 @@ print("Server >>> ", response.value)
 print("")
 my_id = response.value
 
+print("Mi ID es: ", my_id)
+
 thread = ReceiveMessages()
 thread.start()
 
@@ -55,11 +57,11 @@ thread.start()
 try:
 	while True:
 
-		user_option = input("Ingrese la opcion que desea ejecutar: \n1: Enviar un mensaje (para enviarlo directamente ingrese destinatario,mensaje)\n2: Obtener listado completo de clientes\n3: Obtener listado de los mensajes que he enviado\n")
+		user_option = input("Ingrese la opcion que desea ejecutar: \n1: Enviar un mensaje (para enviarlo directamente ingrese ID_destinatario,mensaje)\n2: Obtener listado completo de clientes\n3: Obtener listado de los mensajes que he enviado\n")
 		print("")
 		if user_option == '1':
 
-			user_message = input("Ingrese el destinatario y el mensaje en el formato:\ndestinatario,mensaje\n")
+			user_message = input("Ingrese el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\n")
 
 			# Enviar un mensaje
 			# Los mensajes tienen la siguiente estructura: idClient_MsgNumberByClient;MsgBody;Timestamp
@@ -69,7 +71,7 @@ try:
 			try:
 				user_message_splitted[1]
 			except:
-				print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\ndestinatario,mensaje\n")
+				print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\n")
 				continue
 
 			if len(user_message_splitted[0]) > 0 and len(user_message_splitted[1]) > 0:
@@ -86,7 +88,7 @@ try:
 				print("")
 
 			else:
-				print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\ndestinatario,mensaje\n")
+				print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\n")
 				continue
 
 
@@ -120,7 +122,7 @@ try:
 				try:
 					user_message_splitted[1]
 				except:
-					print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\ndestinatario,mensaje\n")
+					print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\n")
 					continue
 
 				if len(user_message_splitted[0]) > 0 and len(user_message_splitted[1]) > 0:
@@ -137,7 +139,7 @@ try:
 					print("")
 
 				else:
-					print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\ndestinatario,mensaje\n")
+					print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\n")
 					continue
 
 
