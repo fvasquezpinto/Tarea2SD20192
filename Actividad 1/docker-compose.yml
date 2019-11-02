@@ -1,0 +1,30 @@
+version: "3"
+services:
+  server:
+    build: server/
+    image: centos
+    command: python ./server/server.py
+    ports:
+      - 5000:5000
+    volumes:
+      - ./:/server/
+  client1:
+    build: client/
+    command: python ./client/client.py
+    network_mode: host
+    depends_on:
+      - server
+    volumes:
+      - ./:/client/
+    stdin_open: true
+    tty: true
+  client2:
+    build: client/
+    command: python ./client/client.py
+    network_mode: host
+    depends_on:
+      - server
+    volumes:
+      - ./:/client/
+    stdin_open: true
+    tty: true

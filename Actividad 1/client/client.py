@@ -55,11 +55,11 @@ thread.start()
 try:
 	while True:
 
-		user_option = raw_input("Ingrese la opcion que desea ejecutar: \n1: Enviar un mensaje (para enviarlo directamente ingrese destinatario,mensaje)\n2: Obtener listado completo de clientes\n3: Obtener listado de los mensajes que he enviad\n")
+		user_option = input("Ingrese la opcion que desea ejecutar: \n1: Enviar un mensaje (para enviarlo directamente ingrese destinatario,mensaje)\n2: Obtener listado completo de clientes\n3: Obtener listado de los mensajes que he enviad\n")
 		print("")
 		if user_option == '1':
 
-			user_message = raw_input("Ingrese el destinatario y el mensaje en el formato:\ndestinatario,mensaje\n")
+			user_message = input("Ingrese el destinatario y el mensaje en el formato:\ndestinatario,mensaje\n")
 
 			# Enviar un mensaje
 			# Los mensajes tienen la siguiente estructura: idClient_MsgNumberByClient;MsgBody;Timestamp

@@ -1,0 +1,11 @@
+Emisor		Receptor		Fecha y hora		Mensaje
+---------------------------------------------------------------
+1		2		2019-10-30 17:31:22.608492		hola
+1		2		2019-10-30 17:33:14.858002		hola
+1		2		2019-10-30 17:35:53.747367		hola
+1		2		2019-10-30 17:36:53.988742		hola
+1		2		2019-10-30 17:37:44.018207		hola
+1		2		2019-10-30 17:39:02.660789		hola
+1		2		2019-10-30 17:39:57.281016		hola
+1		2		2019-10-30 17:40:28.471713		hola
+1		2		2019-10-30 17:41:49.389950		hola1		2		2019-11-01 14:04:33.435850		hola1		2		2019-11-01 14:27:02.411880		hola1		2		2019-11-01 16:57:53.381719		hola1		2		2019-11-01 16:58:13.115651		adios1		2		2019-11-01 16:58:47.587795		hola1		2		2019-11-01 16:58:58.468127		adios4		3		Friday, November 01, 2019 17:02:22		holaaaa4		e		Friday, November 01, 2019 17:03:54		holaaa4		3		Friday, November 01, 2019 17:04:04		holaaa2		1		Friday, November 01, 2019 17:19:03		aa2		2		Friday, November 01, 2019 17:19:05		aa2		1		Friday, November 01, 2019 17:19:21		aa2		1		Friday, November 01, 2019 17:19:22		aaa2		1		Friday, November 01, 2019 17:19:22		aa2		1		Friday, November 01, 2019 17:19:24		aa2		1		Friday, November 01, 2019 17:19:31		aaaa2		2		Friday, November 01, 2019 17:19:32		aa2		1		Friday, November 01, 2019 17:19:33		aa2		1		Friday, November 01, 2019 17:19:45		a2		1		Friday, November 01, 2019 17:19:45		a2		1		Friday, November 01, 2019 17:19:45		a2		1		Friday, November 01, 2019 17:19:46		a2		1		Friday, November 01, 2019 17:20:01		a2		1		Friday, November 01, 2019 17:20:01		a2		1		Friday, November 01, 2019 17:20:01		a2		1		Friday, November 01, 2019 17:20:02		a2		1		Friday, November 01, 2019 17:20:02		a2		1		Friday, November 01, 2019 17:20:02		a2		1		Friday, November 01, 2019 17:20:03		a2		1		Friday, November 01, 2019 17:20:20		a2		1		Friday, November 01, 2019 17:20:20		a2		1		Friday, November 01, 2019 17:20:20		a2		1		Friday, November 01, 2019 17:20:21		a2		1		Friday, November 01, 2019 17:20:21		a2		1		Friday, November 01, 2019 17:20:21		a2		1		Friday, November 01, 2019 17:20:22		a2		1		Friday, November 01, 2019 17:20:22		a2		1		Friday, November 01, 2019 17:20:22		a2		1		Friday, November 01, 2019 17:20:23		a2		1		Friday, November 01, 2019 17:20:24		a2		1		Friday, November 01, 2019 17:20:24		a2		1		Friday, November 01, 2019 17:20:24		a
