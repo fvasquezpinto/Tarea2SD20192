@@ -1,6 +1,6 @@
 import grpc
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import threading
 import re
 
@@ -27,7 +27,7 @@ class ReceiveMessages(threading.Thread):
 			response = stub_chat.send_receive(chat_request)
 			if str(response.message) != '':
 				print("Han llegado mensajes:\n")
-				print("Server says: ", str(response.message))
+				print("Server >>> ", str(response.message))
 				print("")
 			time.sleep(1)
 		
@@ -44,7 +44,7 @@ stub_chat = chat_pb2_grpc.ChatStub(channel)
 # Adquirir un ID para operar en la arquitectura
 print("Pidiendo al server un ID...")
 response = stub_id_mapper.ID_map(id_mapper_pb2.Empty())
-print("Server says: ", response.value)
+print("Server >>> ", response.value)
 print("")
 my_id = response.value
 
@@ -55,7 +55,7 @@ thread.start()
 try:
 	while True:
 
-		user_option = input("Ingrese la opcion que desea ejecutar: \n1: Enviar un mensaje (para enviarlo directamente ingrese destinatario,mensaje)\n2: Obtener listado completo de clientes\n3: Obtener listado de los mensajes que he enviad\n")
+		user_option = input("Ingrese la opcion que desea ejecutar: \n1: Enviar un mensaje (para enviarlo directamente ingrese destinatario,mensaje)\n2: Obtener listado completo de clientes\n3: Obtener listado de los mensajes que he enviado\n")
 		print("")
 		if user_option == '1':
 
@@ -78,11 +78,11 @@ try:
 				message = user_message_splitted[1]
 
 				print("Pidiendo al server el envio de un mensaje...")
-				msg_to_send = str(my_id) + "_" + str(current_msg_number) + ";" + message + ";" + str(datetime.now().strftime("%A, %B %d, %Y %H:%M:%S"))
+				msg_to_send = str(my_id) + "_" + str(current_msg_number) + ";" + message + ";" + str((datetime.now() + timedelta(hours=-3)).strftime("%A, %B %d, %Y"))
 				chat_request = chat_pb2.ChatRequest(src = str(my_id), dst = target, msg = msg_to_send)
 				current_msg_number += 1
 				response = stub_chat.send_receive(chat_request)
-				print("Server says: ", str(response.message))
+				print("Server >>> ", str(response.message))
 				print("")
 
 			else:
@@ -95,7 +95,7 @@ try:
 			# Pedir lista de clientes
 			print("Pidiendo la lista completa de clientes...")
 			response = stub_id_mapper.Get_clients_list(id_mapper_pb2.Empty())
-			print("Server says: ", response.clients_list)
+			print("Server >>> ", response.clients_list)
 			print("")
 
 		elif user_option == '3':
@@ -104,14 +104,14 @@ try:
 			print("Pidiendo todos los mensajes que he enviado...")
 			client_msg_request = id_mapper_pb2.Number(value = my_id)
 			response = stub_chat.Get_client_msgs_list(client_msg_request)
-			print("Server says: ", response.client_msgs_list)
+			print("Server >>> ", response.client_msgs_list)
 			print("")
 
 			#time.sleep(86400)
 
 		else:
 
-			if re.match("^[A-Za-z0-9]+,[A-Za-z0-9]+$", user_option):
+			if re.match("^[0-9]+,[A-Za-z0-9 ]+$", user_option):
 
 				# Enviar un mensaje
 				# Los mensajes tienen la siguiente estructura: idClient_MsgNumberByClient;MsgBody;Timestamp
@@ -133,7 +133,7 @@ try:
 					chat_request = chat_pb2.ChatRequest(src = str(my_id), dst = target, msg = msg_to_send)
 					current_msg_number += 1
 					response = stub_chat.send_receive(chat_request)
-					print("Server says: ", str(response.message))
+					print("Server >>> ", str(response.message))
 					print("")
 
 				else:

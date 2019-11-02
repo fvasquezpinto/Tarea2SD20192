@@ -38,6 +38,7 @@ def chat(src = "", dst = "", msg = ""):
 		msgs_queues[dst].append(msg)
 		f = open("log.txt","a+")
 		f.write(src  + "\t\t" + dst + "\t\t" + msg.split(";")[2] + "\t\t" + msg.split(";")[1])
+		f.write("\n")
 		f.close()
 
 		return "Message received"
