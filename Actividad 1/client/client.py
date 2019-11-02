@@ -80,7 +80,7 @@ try:
 				message = user_message_splitted[1]
 
 				print("Pidiendo al server el envio de un mensaje...")
-				msg_to_send = str(my_id) + "_" + str(current_msg_number) + ";" + message + ";" + str((datetime.now() + timedelta(hours=-3)).strftime("%A, %B %d, %Y"))
+				msg_to_send = str(my_id) + "_" + str(current_msg_number) + ";" + message + ";" + str((datetime.now() + timedelta(hours=-3)).strftime("%A, %B %d, %Y %H:%M:%S"))
 				chat_request = chat_pb2.ChatRequest(src = str(my_id), dst = target, msg = msg_to_send)
 				current_msg_number += 1
 				response = stub_chat.send_receive(chat_request)
@@ -131,7 +131,7 @@ try:
 					message = user_message_splitted[1]
 
 					print("Pidiendo al server el envio de un mensaje...")
-					msg_to_send = str(my_id) + "_" + str(current_msg_number) + ";" + message + ";" + str(datetime.now().strftime("%A, %B %d, %Y %H:%M:%S"))
+					msg_to_send = str(my_id) + "_" + str(current_msg_number) + ";" + message + ";" + str((datetime.now() + timedelta(hours=-3)).strftime("%A, %B %d, %Y %H:%M:%S"))
 					chat_request = chat_pb2.ChatRequest(src = str(my_id), dst = target, msg = msg_to_send)
 					current_msg_number += 1
 					response = stub_chat.send_receive(chat_request)

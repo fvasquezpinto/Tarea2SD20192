@@ -6,6 +6,10 @@ except:
 	f = open("log.txt","w")
 
 f.close()
+
+#f = open("log.txt","w")
+#f.close()
+
 f = open("log.txt","r")
 lines = f.readlines()
 flag_archivo_vacio = 0
