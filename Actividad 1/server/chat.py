@@ -78,7 +78,7 @@ def get_client_msgs_list(id_client):
 		line_splitted = line.split("\t\t")
 		if int(line_splitted[0]) == id_client:
 
-			msgs_list.append("Msg: " + line_splitted[3] + ", To: " + line_splitted[1] + ", At: " + line_splitted[2])
+			msgs_list.append("Msg: " + line_splitted[3].strip() + ", To: " + line_splitted[1] + ", At: " + line_splitted[2])
 
 	return msgs_list
 
