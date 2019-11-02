@@ -26,9 +26,16 @@ class ReceiveMessages(threading.Thread):
 			chat_request = chat_pb2.ChatRequest(src = str(my_id), dst = "", msg = "")
 			response = stub_chat.send_receive(chat_request)
 			if str(response.message) != '':
-				print("Han llegado mensajes:\n")
-				print("Server >>> ", str(response.message))
+				print("Ha(n) llegado mensaje(s):\n")
+
+				for msg_to_client in str(response.message).split(";/;;/;///;"):
+
+					print(msg_to_client)
+
 				print("")
+
+				#print("Server >>> ", str(response.message))
+				#print("")
 			time.sleep(1)
 		
 
@@ -44,8 +51,8 @@ stub_chat = chat_pb2_grpc.ChatStub(channel)
 # Adquirir un ID para operar en la arquitectura
 print("Pidiendo al server un ID...")
 response = stub_id_mapper.ID_map(id_mapper_pb2.Empty())
-print("Server >>> ", response.value)
-print("")
+#print("Server >>> ", response.value)
+#print("")
 my_id = response.value
 
 print("Mi ID es: ", my_id)
@@ -71,7 +78,7 @@ try:
 			try:
 				user_message_splitted[1]
 			except:
-				print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\n")
+				print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\nmensaje debe ser alfanumerico\n")
 				continue
 
 			if len(user_message_splitted[0]) > 0 and len(user_message_splitted[1]) > 0:
@@ -84,11 +91,11 @@ try:
 				chat_request = chat_pb2.ChatRequest(src = str(my_id), dst = target, msg = msg_to_send)
 				current_msg_number += 1
 				response = stub_chat.send_receive(chat_request)
-				print("Server >>> ", str(response.message))
+				print("Servidor dice: ", str(response.message))
 				print("")
 
 			else:
-				print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\n")
+				print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\nmensaje debe ser alfanumerico\n")
 				continue
 
 
@@ -97,17 +104,20 @@ try:
 			# Pedir lista de clientes
 			print("Pidiendo la lista completa de clientes...")
 			response = stub_id_mapper.Get_clients_list(id_mapper_pb2.Empty())
-			print("Server >>> ", response.clients_list)
+			print("Lista de clientes: ", response.clients_list)
 			print("")
 
 		elif user_option == '3':
 
 			# Pedir todos los mensajes que ha enviado este cliente
 			print("Pidiendo todos los mensajes que he enviado...")
+			print("")
 			client_msg_request = id_mapper_pb2.Number(value = my_id)
 			response = stub_chat.Get_client_msgs_list(client_msg_request)
-			print("Server >>> ", response.client_msgs_list)
+			for client_msg in response.client_msgs_list:
+				print(client_msg)
 			print("")
+
 
 			#time.sleep(86400)
 
@@ -122,7 +132,7 @@ try:
 				try:
 					user_message_splitted[1]
 				except:
-					print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\n")
+					print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\nmensaje debe ser alfanumerico\n")
 					continue
 
 				if len(user_message_splitted[0]) > 0 and len(user_message_splitted[1]) > 0:
@@ -135,11 +145,11 @@ try:
 					chat_request = chat_pb2.ChatRequest(src = str(my_id), dst = target, msg = msg_to_send)
 					current_msg_number += 1
 					response = stub_chat.send_receive(chat_request)
-					print("Server >>> ", str(response.message))
+					print("Servidor dice: ", str(response.message))
 					print("")
 
 				else:
-					print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\n")
+					print("IMPORTANTE: Debe ingresar el destinatario y el mensaje en el formato:\nID_destinatario,mensaje\nmensaje debe ser alfanumerico\n")
 					continue
 
 

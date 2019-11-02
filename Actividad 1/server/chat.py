@@ -58,7 +58,7 @@ def chat(src = "", dst = "", msg = ""):
 
 			for msg in msgs_queues[src]:
 
-				income_msgs += "Msg: " + msg.split(";")[1] + ", From: " + msg.split(";")[0].split("_")[0] + ", At: " + msg.split(";")[2] + ";"
+				income_msgs += "Msg: " + msg.split(";")[1] + ", From: " + msg.split(";")[0].split("_")[0] + ", At: " + msg.split(";")[2] + ";/;;/;///;"
 
 			msgs_queues[src] = []
 
