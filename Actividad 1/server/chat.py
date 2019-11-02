@@ -20,8 +20,8 @@ f.close()
 f = open("log.txt","a+")
 if flag_archivo_vacio == 1:
 
-	f.write("Emisor\t\tReceptor\t\tFecha y hora\t\tMensaje\n")
-	f.write("---------------------------------------------------------------\n")
+	f.write("Emisor\t\tReceptor\t\tFecha y hora\t\t\t\tMensaje\n")
+	f.write("----------------------------------------------------------------------------------------\n")
 
 f.close()
 
