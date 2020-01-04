@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+message Empty {
+
+}
+
+message Number {
+    int32 value = 1;
+}
+
+message IntList {
+    repeated int32 clients_list = 4 [packed=true];
+}
+
+service ID_mapper {
+    rpc ID_map(Number) returns (Number) {}
+
+    rpc Get_clients_list(Empty) returns (IntList) {}
+}
+

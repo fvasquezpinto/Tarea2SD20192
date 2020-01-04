@@ -1,0 +1,25 @@
+syntax = "proto3";
+import "id_mapper.proto";
+
+message ChatRequest {
+    string src = 1;
+    string dst = 2;
+    string msg = 3;
+}
+
+message ChatReply {
+  string message = 1;
+}
+
+message StringList {
+    repeated string client_msgs_list = 4;
+}
+
+service Chat {
+    rpc send_receive(ChatRequest) returns (ChatReply) {}
+
+    rpc Get_client_msgs_list(Number) returns (StringList) {}
+}
+
+
+
