@@ -1,0 +1,50 @@
+# docker-compose.yml
+
+version: "3.2"
+services:
+    rabbitmq-server:
+        image: "rabbitmq:3"
+        hostname: "rabbit"
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+        labels:
+            NAME: "rabbitmq"
+        volumes:
+            - ./rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
+
+    servidor:
+        build: server/
+        image: centos
+        command: python ./server/server.py
+        depends_on:
+            - rabbitmq-server
+        network_mode: host
+        volumes:
+            - ./:/server/
+        stdin_open: true
+        tty: true
+
+    client1:
+        build: client1/
+        command: python ./client1/client1.py
+        depends_on:
+            - rabbitmq-server
+            - servidor
+        network_mode: host
+        volumes:
+            - ./:/client1/
+        stdin_open: true
+        tty: true
+
+    client2:
+        build: client2/
+        command: python ./client2/client2.py
+        depends_on:
+            - rabbitmq-server
+            - servidor
+        network_mode: host
+        volumes:
+            - ./:/client2/
+        stdin_open: true
+        tty: true
